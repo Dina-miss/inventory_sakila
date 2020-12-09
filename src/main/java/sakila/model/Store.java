@@ -11,7 +11,7 @@ import lombok.ToString;
 @EqualsAndHashCode
 public class Store {
 
-    private String managerStaffId;
+    private int staffId;
     private int addressId;
 
 }

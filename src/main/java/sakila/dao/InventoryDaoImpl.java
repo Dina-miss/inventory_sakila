@@ -71,8 +71,8 @@ public class InventoryDaoImpl implements InventoryDao {
     @Override
     public void deleteInventory(Inventory inventory) throws UnknownInventoryException, UnknownStoreException, UnknownFilmException {
         Optional<InventoryEntity> inventoryEntity = inventoryRepository.findByFilmAndStore(
-                inventory.getFilm(),
-                inventory.getStoreId())
+                queryFilm(inventory.getFilm()),
+                queryStore(inventory.getStoreId()))
                 .stream()
                 .findFirst();
         if(!inventoryEntity.isPresent()) {
@@ -90,8 +90,8 @@ public class InventoryDaoImpl implements InventoryDao {
     @Override
     public void updateDatabase(Inventory original, Inventory updated) throws UnknownInventoryException, UnknownStoreException, UnknownFilmException {
         Optional<InventoryEntity> inventoryEntity = inventoryRepository.findByFilmAndStore(
-                original.getFilm(),
-                original.getStoreId())
+                queryFilm(original.getFilm()),
+                queryStore(original.getStoreId()))
                 .stream()
                 .findFirst();
         if (!inventoryEntity.isPresent()) {

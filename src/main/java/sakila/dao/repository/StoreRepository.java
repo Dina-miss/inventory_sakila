@@ -8,6 +8,6 @@ import sakila.dao.entity.StoreEntity;
 import java.util.Collection;
 
 public interface StoreRepository extends CrudRepository<StoreEntity, Integer> {
-    Collection<StoreEntity> findById(int storeId);
-    Collection<StoreEntity> findByStaffAndAddress(StaffEntity staff, AddressEntity address);
+    Collection<StoreEntity> findByStoreId(int storeId);
+    Collection<StoreEntity> findByStaffIdAndAddress(StaffEntity staffId, AddressEntity address);
 }

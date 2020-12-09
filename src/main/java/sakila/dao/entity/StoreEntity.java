@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.ServiceLoader;
 
 @Data
 @Builder
@@ -19,8 +20,8 @@ public class StoreEntity {
     private int storeId;
 
     @ManyToOne
-    @JoinColumn(name = "staff_id")
-    private StaffEntity staff;
+    @JoinColumn(name = "manager_staff_id")
+    private StaffEntity staffId;
 
     @ManyToOne
     @JoinColumn(name = "address_id")
