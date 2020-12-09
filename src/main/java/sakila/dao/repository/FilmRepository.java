@@ -7,9 +7,12 @@ import sakila.dao.entity.LanguageEntity;
 import java.sql.Clob;
 import java.time.Year;
 import java.util.Collection;
+import java.util.Optional;
 
 public interface FilmRepository extends CrudRepository<FilmEntity, Integer> {
-    Collection<FilmEntity> findByFilmId(int filmId);
+    @Override
+    Optional<FilmEntity> findById(Integer integer);
+
     Collection<FilmEntity> findByTitle(String title);
     Collection<FilmEntity> findByTitleAndDescriptionAndReleaseYearAndLanguageAndOriginalLanguageAndRentalDurationAndRentalRateAndLengthAndReplacementCostAndRatingAndSpecialFeatures(
             String title, Clob description, Year releaseYear, LanguageEntity language, LanguageEntity originalLanguage, int rentalDuration,

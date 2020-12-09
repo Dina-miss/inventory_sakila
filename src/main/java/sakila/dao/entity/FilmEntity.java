@@ -19,7 +19,7 @@ public class FilmEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "film_id")
-    private int filmId;
+    private int id;
 
     @Column
     private String title;

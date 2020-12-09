@@ -63,7 +63,7 @@ public class StoreController {
         try {
             service.updateDatabase(new Store(
                             storeUpdatedDto.getStaffId(),
-                            storeUpdatedDto.getStaffId()
+                            storeUpdatedDto.getAddressId()
                     ),
                     new Store(
                             storeUpdatedDto.getUpdateStaffId(),

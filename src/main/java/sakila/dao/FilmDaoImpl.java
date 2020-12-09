@@ -68,7 +68,9 @@ public class FilmDaoImpl implements FilmDao {
     }
 
     protected LanguageEntity queryLanguage(String language) throws UnknownLanguageException {
-        Optional<LanguageEntity> languageEntity = languageRepository.findByName(language);
+        Optional<LanguageEntity> languageEntity = languageRepository.findByName(language).stream()
+                .filter(entity -> entity.getName().equals(language))
+                .findFirst();
         if(!languageEntity.isPresent()) {
             throw new UnknownLanguageException("Unknown language: " + language);
         }
