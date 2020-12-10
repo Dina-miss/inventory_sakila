@@ -90,27 +90,4 @@ public class StoreDaoImpl implements StoreDao {
         }
     }
 
-    @Override
-    public void updateDatabase(Store original, Store updated) throws UnknownStoreException, UnknownStaffException, UnknownAddressException {
-        Optional<StoreEntity> storeEntity = storeRepository.findByStaffIdAndAddress(
-                queryStaff(original.getStaffId()),
-                queryAddress(original.getAddressId()))
-                .stream()
-                .findFirst();
-        if (!storeEntity.isPresent()) {
-            throw new UnknownStoreException("Unknown store: " + original.toString());
-        }
-        log.info("Original: " + storeEntity.get().toString());
-
-        storeEntity.get().setStaffId(queryStaff(updated.getStaffId()));
-        storeEntity.get().setAddress(queryAddress(updated.getAddressId()));
-        log.info("Updated: " + storeEntity.get().toString());
-
-        try {
-            storeRepository.save(storeEntity.get());
-        }
-        catch (Exception e) {
-            log.error(e.getMessage());
-        }
-    }
 }

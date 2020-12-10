@@ -2,8 +2,6 @@ package sakila.dao.entity;
 
 import lombok.*;
 
-import javax.persistence.*;
-import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Data
@@ -11,19 +9,19 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Entity
-@Table(name = "language", schema = "sakila")
+@javax.persistence.Entity
+@javax.persistence.Table(name = "language", schema = "sakila")
 public class LanguageEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "language_id")
+    @javax.persistence.Id
+    @javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
+    @javax.persistence.Column(name = "language_id")
     private int id;
 
-    @Column(name = "language")
+    @javax.persistence.Column(name = "language")
     private String name;
 
-    @Column(name = "last_update")
+    @javax.persistence.Column(name = "last_update")
     private Timestamp lastUpdate;
 
 }

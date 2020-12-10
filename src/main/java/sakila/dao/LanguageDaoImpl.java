@@ -17,7 +17,6 @@ import java.util.stream.StreamSupport;
 @Service
 @AllArgsConstructor
 public class LanguageDaoImpl implements LanguageDao {
-
     private final LanguageRepository languageRepository;
 
     @Override

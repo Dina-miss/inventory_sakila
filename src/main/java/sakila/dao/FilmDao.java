@@ -11,6 +11,5 @@ public interface FilmDao {
     Collection<Film> readAll();
     void createFilm(Film film) throws UnknownLanguageException;
     void deleteFilm(Film film) throws UnknownFilmException, UnknownLanguageException;
-    void updateDatabase(Film original, Film updated) throws UnknownFilmException, UnknownLanguageException;
 
 }

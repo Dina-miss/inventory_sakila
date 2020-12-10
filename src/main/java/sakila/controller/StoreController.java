@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import sakila.controller.dto.StoreDto;
-import sakila.controller.dto.StoreUpdatedDto;
 import sakila.exceptions.UnknownAddressException;
 import sakila.exceptions.UnknownStaffException;
 import sakila.exceptions.UnknownStoreException;
@@ -58,20 +57,4 @@ public class StoreController {
         }
     }
 
-    @PutMapping("/Store")
-    public void updateStore(@RequestBody StoreUpdatedDto storeUpdatedDto) {
-        try {
-            service.updateDatabase(new Store(
-                            storeUpdatedDto.getStaffId(),
-                            storeUpdatedDto.getAddressId()
-                    ),
-                    new Store(
-                            storeUpdatedDto.getUpdateStaffId(),
-                            storeUpdatedDto.getUpdateAddressId()
-                    ));
-        }
-        catch (UnknownAddressException | UnknownStaffException | UnknownStoreException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
-        }
-    }
 }

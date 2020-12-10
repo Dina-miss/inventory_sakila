@@ -8,11 +8,10 @@ import java.util.Collection;
 import java.util.Optional;
 
 public interface FilmRepository extends CrudRepository<FilmEntity, Integer> {
-    @Override
     Optional<FilmEntity> findById(Integer integer);
 
     Collection<FilmEntity> findByTitle(String title);
-    Collection<FilmEntity> findByTitleAndDescriptionAndReleaseYearAndLanguageAndRentalDurationAndRentalRateAndLengthAndReplacementCostAndSpecialFeatures(
-            String title, String description, int releaseYear, LanguageEntity language, int rentalDuration,
+    Collection<FilmEntity> findByTitleAndDescriptionAndReleaseYearAndRentalDurationAndRentalRateAndLengthAndReplacementCostAndSpecialFeatures(
+            String title, String description, int releaseYear, int rentalDuration,
             double rentalRate, int length, double replacementCost, String specialFeatures);
 }

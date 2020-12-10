@@ -39,9 +39,5 @@ public class InventoryServiceImpl implements InventoryService {
         inventoryDao.deleteInventory(inventory);
     }
 
-    @Override
-    public void updateDatabase(Inventory oldInventory, Inventory newInventory) throws UnknownInventoryException, UnknownStoreException, UnknownFilmException, UnknownStaffException, UnknownAddressException, UnknownCityException, UnknownCountryException, UnknownLanguageException {
-        inventoryDao.updateDatabase(oldInventory, newInventory);
-    }
 
 }

@@ -31,7 +31,6 @@ public class FilmDaoImpl implements FilmDao {
                         entity.getTitle(),
                         entity.getDescription(),
                         entity.getReleaseYear(),
-                        entity.getLanguage().getName(),
                         entity.getRentalDuration(),
                         entity.getRentalRate(),
                         entity.getLength(),
@@ -42,12 +41,11 @@ public class FilmDaoImpl implements FilmDao {
     }
 
     @Override
-    public void createFilm(Film film) throws UnknownLanguageException {
+    public void createFilm(Film film) {
         FilmEntity filmEntity = FilmEntity.builder()
                 .title(film.getTitle())
                 .description(film.getDescription())
                 .releaseYear(film.getReleaseYear())
-                .language(queryLanguage(film.getLanguage()))
                 .rentalDuration(film.getRentalDuration())
                 .rentalRate(film.getRentalRate())
                 .length(film.getLength())
@@ -63,24 +61,13 @@ public class FilmDaoImpl implements FilmDao {
         }
     }
 
-    protected LanguageEntity queryLanguage(String language) throws UnknownLanguageException {
-        Optional<LanguageEntity> languageEntity = languageRepository.findByName(language).stream()
-                .filter(entity -> entity.getName().equals(language))
-                .findFirst();
-        if(!languageEntity.isPresent()) {
-            throw new UnknownLanguageException("Unknown language: " + language);
-        }
-        return languageEntity.get();
-    }
-
 
     @Override
-    public void deleteFilm(Film film) throws UnknownFilmException, UnknownLanguageException {
-        Optional<FilmEntity> filmEntity = filmRepository.findByTitleAndDescriptionAndReleaseYearAndLanguageAndRentalDurationAndRentalRateAndLengthAndReplacementCostAndSpecialFeatures(
+    public void deleteFilm(Film film) throws UnknownFilmException {
+        Optional<FilmEntity> filmEntity = filmRepository.findByTitleAndDescriptionAndReleaseYearAndRentalDurationAndRentalRateAndLengthAndReplacementCostAndSpecialFeatures(
                 film.getTitle(),
                 film.getDescription(),
                 film.getReleaseYear(),
-                queryLanguage(film.getLanguage()),
                 film.getRentalDuration(),
                 film.getRentalRate(),
                 film.getLength(),
@@ -100,41 +87,4 @@ public class FilmDaoImpl implements FilmDao {
         }
     }
 
-    @Override
-    public void updateDatabase(Film original, Film updated) throws UnknownFilmException, UnknownLanguageException {
-        Optional<FilmEntity> filmEntity = filmRepository.findByTitleAndDescriptionAndReleaseYearAndLanguageAndRentalDurationAndRentalRateAndLengthAndReplacementCostAndSpecialFeatures(
-                original.getTitle(),
-                original.getDescription(),
-                original.getReleaseYear(),
-                queryLanguage(original.getLanguage()),
-                original.getRentalDuration(),
-                original.getRentalRate(),
-                original.getLength(),
-                original.getReplacementCost(),
-                original.getSpecialFeatures())
-                .stream()
-                .findFirst();
-        if(!filmEntity.isPresent()) {
-            throw new UnknownFilmException("Unknown film: " + original.toString());
-        }
-        log.info("Original: " + filmEntity.get().toString());
-
-        filmEntity.get().setTitle(updated.getTitle());
-        filmEntity.get().setDescription(updated.getDescription());
-        filmEntity.get().setReleaseYear(updated.getReleaseYear());
-        filmEntity.get().setLanguage(queryLanguage(updated.getLanguage()));
-        filmEntity.get().setRentalDuration(updated.getRentalDuration());
-        filmEntity.get().setRentalRate(updated.getRentalRate());
-        filmEntity.get().setLength(updated.getLength());
-        filmEntity.get().setReplacementCost(updated.getReplacementCost());
-        filmEntity.get().setSpecialFeatures(updated.getSpecialFeatures());
-        log.info("Updated: " + filmEntity.get().toString());
-
-        try {
-            filmRepository.save(filmEntity.get());
-        }
-        catch (Exception e) {
-            log.error(e.getMessage());
-        }
-    }
 }

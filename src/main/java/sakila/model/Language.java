@@ -8,6 +8,5 @@ import lombok.*;
 @EqualsAndHashCode
 public class Language {
 
-    private String name;
-
+        private String name;
 }

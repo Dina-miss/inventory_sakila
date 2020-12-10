@@ -15,7 +15,6 @@ public class Film {
     private String title;
     private String description;
     private int releaseYear;
-    private String language;
     private int rentalDuration;
     private double rentalRate;
     private int length;

@@ -12,6 +12,5 @@ public interface InventoryService {
 
     void recordInventory(Inventory inventory) throws UnknownStoreException, UnknownFilmException, UnknownStaffException, UnknownAddressException, UnknownCityException, UnknownCountryException, UnknownLanguageException;
     void deleteInventory(Inventory inventory) throws UnknownInventoryException, UnknownStoreException, UnknownFilmException, UnknownStaffException, UnknownAddressException, UnknownCityException, UnknownCountryException, UnknownLanguageException;
-    void updateDatabase(Inventory original, Inventory updated) throws UnknownInventoryException, UnknownStoreException, UnknownFilmException, UnknownStaffException, UnknownAddressException, UnknownCityException, UnknownCountryException, UnknownLanguageException;
 
 }

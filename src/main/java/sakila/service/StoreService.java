@@ -12,6 +12,5 @@ public interface StoreService {
 
     void recordStore(Store store) throws UnknownStaffException, UnknownAddressException;
     void deleteStore(Store store) throws UnknownStoreException, UnknownStaffException, UnknownAddressException;
-    void updateDatabase(Store original, Store updated) throws UnknownStoreException, UnknownStaffException, UnknownAddressException;
 
 }

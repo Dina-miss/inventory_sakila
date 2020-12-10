@@ -11,5 +11,4 @@ public interface InventoryDao {
     Collection<Inventory> readAll();
     void createInventory(Inventory inventory) throws UnknownFilmException, UnknownStoreException;
     void deleteInventory(Inventory inventory) throws UnknownInventoryException, UnknownStoreException, UnknownFilmException;
-    void updateDatabase(Inventory original, Inventory updated) throws UnknownInventoryException, UnknownStoreException, UnknownFilmException;
 }

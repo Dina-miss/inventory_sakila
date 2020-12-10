@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import sakila.controller.dto.InventoryDto;
-import sakila.controller.dto.InventoryUpdatedDto;
 import sakila.exceptions.*;
 import sakila.model.Inventory;
 import sakila.service.InventoryService;
@@ -62,22 +61,4 @@ public class InventoryController {
         }
     }
 
-    @PutMapping("/Inventory")
-    public void updateInventory(@RequestBody InventoryUpdatedDto inventoryUpdatedDto) {
-        try {
-            service.updateDatabase(new Inventory(
-                    inventoryUpdatedDto.getFilm(),
-                    inventoryUpdatedDto.getStoreId()
-            ),
-            new  Inventory(
-                    inventoryUpdatedDto.getUpdateFilm(),
-                    inventoryUpdatedDto.getUpdateStoreId()
-            ));
-        }
-        catch (UnknownInventoryException | UnknownStoreException | UnknownFilmException |
-                UnknownStaffException | UnknownAddressException | UnknownCityException |
-                UnknownCountryException | UnknownLanguageException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
-        }
-    }
 }

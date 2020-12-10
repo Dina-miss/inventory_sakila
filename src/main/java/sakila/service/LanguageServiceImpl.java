@@ -13,7 +13,6 @@ import java.util.Collection;
 @Service
 @RequiredArgsConstructor
 public class LanguageServiceImpl implements LanguageService {
-
     private final LanguageDao languageDao;
 
     @Override

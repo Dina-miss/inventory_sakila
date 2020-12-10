@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import sakila.controller.dto.AddressDto;
-import sakila.controller.dto.AddressUpdatedDto;
 import sakila.exceptions.UnknownAddressException;
 import sakila.exceptions.UnknownCountryException;
 import sakila.model.Address;
@@ -73,30 +72,4 @@ public class AddressController {
         }
     }
 
-    @PutMapping("/Address")
-    public void updateAddress(@RequestBody AddressUpdatedDto addressUpdatedDto) {
-        try {
-            service.updateDatabase(new Address(
-                            addressUpdatedDto.getAddress(),
-                            addressUpdatedDto.getAddress2(),
-                            addressUpdatedDto.getDistrict(),
-                            addressUpdatedDto.getCity(),
-                            addressUpdatedDto.getCountry(),
-                            addressUpdatedDto.getPostalCode(),
-                            addressUpdatedDto.getPhone()
-                    ),
-                    new Address(
-                            addressUpdatedDto.getUpdateAddress(),
-                            addressUpdatedDto.getUpdateAddress2(),
-                            addressUpdatedDto.getUpdateDistrict(),
-                            addressUpdatedDto.getUpdateCity(),
-                            addressUpdatedDto.getCountry(),
-                            addressUpdatedDto.getPostalCode(),
-                            addressUpdatedDto.getUpdatePhone()
-                    ));
-        }
-        catch (UnknownAddressException | UnknownCountryException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
-        }
-    }
 }

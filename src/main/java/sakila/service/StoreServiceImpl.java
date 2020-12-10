@@ -33,9 +33,5 @@ public class StoreServiceImpl implements StoreService {
         storeDao.deleteStore(store);
     }
 
-    @Override
-    public void updateDatabase(Store oldStore, Store newStore) throws UnknownStoreException, UnknownStaffException, UnknownAddressException {
-        storeDao.updateDatabase(oldStore, newStore);
-    }
 
 }

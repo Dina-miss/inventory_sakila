@@ -40,9 +40,4 @@ public class AddressServiceImpl implements AddressService {
         addressDao.deleteAddress(address);
     }
 
-    @Override
-    public void updateDatabase(Address oldAddress, Address newAddress) throws UnknownAddressException, UnknownCountryException {
-        addressDao.updateDatabase(oldAddress, newAddress);
-    }
-
 }

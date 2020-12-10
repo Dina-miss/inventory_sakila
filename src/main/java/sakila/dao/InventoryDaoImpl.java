@@ -87,27 +87,4 @@ public class InventoryDaoImpl implements InventoryDao {
         }
     }
 
-    @Override
-    public void updateDatabase(Inventory original, Inventory updated) throws UnknownInventoryException, UnknownStoreException, UnknownFilmException {
-        Optional<InventoryEntity> inventoryEntity = inventoryRepository.findByFilmAndStore(
-                queryFilm(original.getFilm()),
-                queryStore(original.getStoreId()))
-                .stream()
-                .findFirst();
-        if (!inventoryEntity.isPresent()) {
-            throw new UnknownInventoryException("Unknown Inventory: " + original.toString());
-        }
-
-        log.info("Original: " + inventoryEntity.get().toString());
-        inventoryEntity.get().setFilm(queryFilm(updated.getFilm()));
-        inventoryEntity.get().setStore(queryStore(updated.getStoreId()));
-        log.info("Updated: " + inventoryEntity.get().toString());
-
-        try {
-            inventoryRepository.save(inventoryEntity.get());
-        }
-        catch (Exception e) {
-            log.error(e.getMessage());
-        }
-    }
 }

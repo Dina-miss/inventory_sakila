@@ -10,5 +10,4 @@ public interface LanguageService {
 
     void recordLanguage(Language language);
     void deleteLanguage(Language language) throws UnknownLanguageException;
-
 }

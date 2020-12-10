@@ -13,6 +13,4 @@ public interface FilmService {
     void recordFilm(Film film) throws UnknownLanguageException;
     void deleteFilm(Film film) throws UnknownFilmException, UnknownLanguageException;
 
-    void updateDatabase(Film original, Film updated) throws UnknownFilmException, UnknownLanguageException;
-
 }

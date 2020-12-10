@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import sakila.controller.dto.FilmDto;
-import sakila.controller.dto.FilmUpdatedDto;
 import sakila.exceptions.*;
 import sakila.model.Film;
 import sakila.service.FilmService;
@@ -29,7 +28,6 @@ public class FilmController {
                         .title(model.getTitle())
                         .description(model.getDescription())
                         .releaseYear(model.getReleaseYear())
-                        .language(model.getLanguage())
                         .rentalDuration(model.getRentalDuration())
                         .rentalRate(model.getRentalRate())
                         .length(model.getLength())
@@ -46,7 +44,6 @@ public class FilmController {
                     filmDto.getTitle(),
                     filmDto.getDescription(),
                     filmDto.getReleaseYear(),
-                    filmDto.getLanguage(),
                     filmDto.getRentalDuration(),
                     filmDto.getRentalRate(),
                     filmDto.getLength(),
@@ -66,44 +63,12 @@ public class FilmController {
                     filmDto.getTitle(),
                     filmDto.getDescription(),
                     filmDto.getReleaseYear(),
-                    filmDto.getLanguage(),
                     filmDto.getRentalDuration(),
                     filmDto.getRentalRate(),
                     filmDto.getLength(),
                     filmDto.getReplacementCost(),
                     filmDto.getSpecialFeatures()
             ));
-        }
-        catch (UnknownFilmException | UnknownLanguageException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
-        }
-    }
-
-    @PutMapping("/Film")
-    public void updateFilm(@RequestBody FilmUpdatedDto filmUpdatedDto) {
-        try {
-            service.updateDatabase(new Film(
-                    filmUpdatedDto.getTitle(),
-                    filmUpdatedDto.getDescription(),
-                    filmUpdatedDto.getReleaseYear(),
-                    filmUpdatedDto.getLanguage(),
-                    filmUpdatedDto.getRentalDuration(),
-                    filmUpdatedDto.getRentalRate(),
-                    filmUpdatedDto.getLength(),
-                    filmUpdatedDto.getReplacementCost(),
-                    filmUpdatedDto.getSpecialFeatures()
-                    ),
-                    new  Film(
-                            filmUpdatedDto.getUpdateTitle(),
-                            filmUpdatedDto.getUpdateDescription(),
-                            filmUpdatedDto.getUpdateReleaseYear(),
-                            filmUpdatedDto.getUpdateLanguage(),
-                            filmUpdatedDto.getUpdateRentalDuration(),
-                            filmUpdatedDto.getUpdateRentalRate(),
-                            filmUpdatedDto.getUpdateLength(),
-                            filmUpdatedDto.getUpdateReplacementCost(),
-                            filmUpdatedDto.getUpdateSpecialFeatures()
-                    ));
         }
         catch (UnknownFilmException | UnknownLanguageException e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());

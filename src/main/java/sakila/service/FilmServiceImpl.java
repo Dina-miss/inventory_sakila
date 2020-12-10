@@ -32,8 +32,4 @@ public class FilmServiceImpl implements FilmService {
         filmDao.deleteFilm(film);
     }
 
-    @Override
-    public void updateDatabase(Film oldFilm, Film newFilm) throws UnknownFilmException, UnknownLanguageException {
-        filmDao.updateDatabase(oldFilm, newFilm);
-    }
 }
