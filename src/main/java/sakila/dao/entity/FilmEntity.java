@@ -3,9 +3,7 @@ package sakila.dao.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.sql.Clob;
 import java.sql.Timestamp;
-import java.time.Year;
 
 @Data
 @Builder
@@ -21,15 +19,14 @@ public class FilmEntity {
     @Column(name = "film_id")
     private int id;
 
-    @Column
+    @Column(name = "title")
     private String title;
 
-    @Column
-    @Lob
-    private Clob description;
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "release_year")
-    private Year releaseYear;
+    private int releaseYear;
 
     @ManyToOne
     @JoinColumn(name = "language_id")
@@ -45,13 +42,13 @@ public class FilmEntity {
     @Column(name = "rental_rate")
     private double rentalRate;
 
-    @Column
+    @Column(name = "length")
     private int length;
 
     @Column(name = "replacement_cost")
     private double replacementCost;
 
-    @Column
+    @Column(name = "rating")
     private String rating;
 
     @Column(name = "special_features")

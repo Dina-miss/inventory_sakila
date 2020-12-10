@@ -3,6 +3,7 @@ package sakila.dao.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Data
@@ -19,9 +20,10 @@ public class LanguageEntity {
     @Column(name = "language_id")
     private int id;
 
-    @Column
+    @Column(name = "language")
     private String name;
 
     @Column(name = "last_update")
     private Timestamp lastUpdate;
+
 }

@@ -7,11 +7,8 @@ import lombok.experimental.SuperBuilder;
 
 @Data
 @SuperBuilder
-@AllArgsConstructor
 @NoArgsConstructor
-public class InventoryUpdatedDto extends InventoryDto {
-
-    private String updateFilm;
-    private int updateStoreId;
-
+@AllArgsConstructor
+public class LanguageUpdatedDto extends LanguageDto {
+    private String updateLanguage;
 }

@@ -15,15 +15,13 @@ import java.time.Year;
 public class FilmDto {
 
     private String title;
-    private Clob description;
-    private Year releaseYear;
+    private String description;
+    private int releaseYear;
     private String language;
-    private String originalLanguage;
     private int rentalDuration;
     private double rentalRate;
     private int length;
     private double replacementCost;
-    private String rating;
     private String specialFeatures;
 
 }

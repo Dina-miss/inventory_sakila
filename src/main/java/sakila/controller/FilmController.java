@@ -30,12 +30,10 @@ public class FilmController {
                         .description(model.getDescription())
                         .releaseYear(model.getReleaseYear())
                         .language(model.getLanguage())
-                        .originalLanguage(model.getOriginalLanguage())
                         .rentalDuration(model.getRentalDuration())
                         .rentalRate(model.getRentalRate())
                         .length(model.getLength())
                         .replacementCost(model.getReplacementCost())
-                        .rating(model.getRating())
                         .specialFeatures(model.getSpecialFeatures())
                         .build())
                 .collect(Collectors.toList());
@@ -49,12 +47,10 @@ public class FilmController {
                     filmDto.getDescription(),
                     filmDto.getReleaseYear(),
                     filmDto.getLanguage(),
-                    filmDto.getOriginalLanguage(),
                     filmDto.getRentalDuration(),
                     filmDto.getRentalRate(),
                     filmDto.getLength(),
                     filmDto.getReplacementCost(),
-                    filmDto.getRating(),
                     filmDto.getSpecialFeatures()
             ));
         }
@@ -71,12 +67,10 @@ public class FilmController {
                     filmDto.getDescription(),
                     filmDto.getReleaseYear(),
                     filmDto.getLanguage(),
-                    filmDto.getOriginalLanguage(),
                     filmDto.getRentalDuration(),
                     filmDto.getRentalRate(),
                     filmDto.getLength(),
                     filmDto.getReplacementCost(),
-                    filmDto.getRating(),
                     filmDto.getSpecialFeatures()
             ));
         }
@@ -89,29 +83,25 @@ public class FilmController {
     public void updateFilm(@RequestBody FilmUpdatedDto filmUpdatedDto) {
         try {
             service.updateDatabase(new Film(
-                    filmUpdatedDto.getUpdateTitle(),
-                    filmUpdatedDto.getUpdateDescription(),
-                    filmUpdatedDto.getUpdateReleaseYear(),
-                    filmUpdatedDto.getUpdateLanguage(),
-                    filmUpdatedDto.getUpdateOriginalLanguage(),
-                    filmUpdatedDto.getUpdateRentalDuration(),
-                    filmUpdatedDto.getUpdateRentalRate(),
-                    filmUpdatedDto.getUpdateLength(),
-                    filmUpdatedDto.getUpdateReplacementCost(),
-                    filmUpdatedDto.getUpdateRating(),
-                    filmUpdatedDto.getUpdateSpecialFeatures()
+                    filmUpdatedDto.getTitle(),
+                    filmUpdatedDto.getDescription(),
+                    filmUpdatedDto.getReleaseYear(),
+                    filmUpdatedDto.getLanguage(),
+                    filmUpdatedDto.getRentalDuration(),
+                    filmUpdatedDto.getRentalRate(),
+                    filmUpdatedDto.getLength(),
+                    filmUpdatedDto.getReplacementCost(),
+                    filmUpdatedDto.getSpecialFeatures()
                     ),
                     new  Film(
                             filmUpdatedDto.getUpdateTitle(),
                             filmUpdatedDto.getUpdateDescription(),
                             filmUpdatedDto.getUpdateReleaseYear(),
                             filmUpdatedDto.getUpdateLanguage(),
-                            filmUpdatedDto.getUpdateOriginalLanguage(),
                             filmUpdatedDto.getUpdateRentalDuration(),
                             filmUpdatedDto.getUpdateRentalRate(),
                             filmUpdatedDto.getUpdateLength(),
                             filmUpdatedDto.getUpdateReplacementCost(),
-                            filmUpdatedDto.getUpdateRating(),
                             filmUpdatedDto.getUpdateSpecialFeatures()
                     ));
         }

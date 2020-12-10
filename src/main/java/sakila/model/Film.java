@@ -5,8 +5,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
-import java.sql.Clob;
-import java.time.Year;
 
 @AllArgsConstructor
 @Getter
@@ -15,15 +13,13 @@ import java.time.Year;
 public class Film {
 
     private String title;
-    private Clob description;
-    private Year releaseYear;
+    private String description;
+    private int releaseYear;
     private String language;
-    private String originalLanguage;
     private int rentalDuration;
     private double rentalRate;
     private int length;
     private double replacementCost;
-    private String rating;
     private String specialFeatures;
 
 }

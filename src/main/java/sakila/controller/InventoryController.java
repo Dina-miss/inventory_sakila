@@ -66,8 +66,8 @@ public class InventoryController {
     public void updateInventory(@RequestBody InventoryUpdatedDto inventoryUpdatedDto) {
         try {
             service.updateDatabase(new Inventory(
-                    inventoryUpdatedDto.getUpdateFilm(),
-                    inventoryUpdatedDto.getUpdateStoreId()
+                    inventoryUpdatedDto.getFilm(),
+                    inventoryUpdatedDto.getStoreId()
             ),
             new  Inventory(
                     inventoryUpdatedDto.getUpdateFilm(),
